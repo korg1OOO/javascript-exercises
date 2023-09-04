@@ -1,17 +1,19 @@
-const fibonacci = function(count) {
-    if (count < 0) return "OOPS";
-    if (count === 0) return 0;
-
-    let firstPrev = 1;
-    let secondPrev = 0;
-    
-    for (let i = 2; i <= count; i++) {
-        let current = firstPrev + secondPrev;
-        secondPrev = firstPrev;
-        firstPrev = current;
+const fibonacci = function(n) {
+    if (n <= 0) {
+        return "OOPS";
+    } else if (n === 1) {
+        return 1;
     }
 
-    return firstPrev;
+    const sequence = [0, 1];
+
+    for (let i = 2; i <= n; i++) {
+        const nextFibonacci = sequence[i - 1] + sequence[i - 2];
+        sequence.push(nextFibonacci);
+    }
+
+    return sequence[n];
 };
 
+// Do not edit below this line
 module.exports = fibonacci;
